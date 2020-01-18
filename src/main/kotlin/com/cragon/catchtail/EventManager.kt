@@ -1,6 +1,7 @@
 package com.cragon.catchtail
 
 import me.nuty.minigamecore.minigame.MinigameStatus
+import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.entity.ArmorStand
@@ -23,7 +24,7 @@ class EventManager(val main: CatchTailMinigame) : Listener {
         if  (main.status == MinigameStatus.STARTED && main.participants.contains(e.player)) {
             val player = e.player
 
-            if (main.tailLists[player]?.get(main.tailLists[player]!!.size - 1)?.distance(e.to!!)!! < 0.1) {
+            if (main.tailLists[player]?.get(main.tailLists[player]?.size!! - 1)?.distance(e.to!!)!! < 0.1) {
                 return
             } else if (main.tailLists[player]!!.size >= 100) {
                 main.tailLists[player]!!.removeAt(0)
