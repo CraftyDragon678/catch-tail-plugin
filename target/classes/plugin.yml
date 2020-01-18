@@ -1,0 +1,8 @@
+name: CatchTail
+version: 1.0-SNAPSHOT
+main: com.cragon.catchtail.CatchTail
+api-version: 1.13
+depend: [MinigameCore]
+authors: [CraftyDragon678]
+description: catch tail!
+website: https://github.com/CraftyDragon678/
