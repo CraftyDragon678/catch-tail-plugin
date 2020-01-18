@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="catch-tail">
+    <output-path>$USER_HOME$/Desktop/MCSV/■■■■플러그인 개발 용/MCW/plugins</output-path>
+    <root id="archive" name="catch-tail.jar">
+      <element id="module-output" name="catch-tail" />
+      <element id="library" level="project" name="KotlinJavaRuntime" />
+    </root>
+  </artifact>
+</component>
