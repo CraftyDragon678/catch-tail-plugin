@@ -24,7 +24,7 @@ class EventManager(val main: CatchTailMinigame) : Listener {
 
     @EventHandler
     fun onPlayerMove(e: PlayerMoveEvent) {
-        if  (main.status == MinigameStatus.STARTED && main.participants.contains(e.player)) {
+        if  (main.status == MinigameStatus.STARTED && main.armorStandList.containsKey(e.player)) {
             val player = e.player
 
             if (main.tailLists[player]?.get(main.tailLists[player]?.size!! - 1)?.distance(e.to!!)!! < 0.1) {
