@@ -80,4 +80,19 @@ class EventManager(val main: CatchTailMinigame) : Listener {
             }
         }
     }
+
+    @EventHandler
+    fun onEntityDamageByEntity(e: EntityDamageEvent) {
+        if (main.status == MinigameStatus.STARTED) {
+            if (e.entity is Player) {
+                val p = e.entity as Player
+                if (main.armorStandList.containsKey(p)) {
+                    if (p.health - e.damage < 1) {
+                        main.playerDead(p)
+                        e.isCancelled = true
+                    }
+                }
+            }
+        }
+    }
 }
