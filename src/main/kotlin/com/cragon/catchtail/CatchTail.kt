@@ -11,8 +11,10 @@ class CatchTail : JavaPlugin() {
     }
 
     override fun onDisable() {
-        CatchTailMinigame.instance.armorStandList.keys.forEach {
-            CatchTailMinigame.instance.armorStandList[it]!!.remove()
+        CatchTailMinigame.instance?.let {
+            it.armorStandList.keys.forEach { p ->
+                    it.armorStandList[p]!!.remove()
+            }
         }
     }
 }

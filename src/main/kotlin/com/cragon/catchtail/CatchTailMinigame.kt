@@ -20,7 +20,7 @@ class CatchTailMinigame : AbstractMinigame() {
     var tailLists: HashMap<Player, ArrayList<Location>> = HashMap()
     var armorStandList: HashMap<Player, ArmorStand> = HashMap()
     companion object {
-        lateinit var instance: CatchTailMinigame
+        var instance: CatchTailMinigame? = null
     }
 //    private val fireHiddenList: Set<Player> = HashSet()
 
