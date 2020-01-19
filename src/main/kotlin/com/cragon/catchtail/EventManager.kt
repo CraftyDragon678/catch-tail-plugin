@@ -82,7 +82,7 @@ class EventManager(val main: CatchTailMinigame) : Listener {
     }
 
     @EventHandler
-    fun onEntityDamageByEntity(e: EntityDamageEvent) {
+    fun onEntityDamage(e: EntityDamageEvent) {
         if (main.status == MinigameStatus.STARTED) {
             if (e.entity is Player) {
                 val p = e.entity as Player
