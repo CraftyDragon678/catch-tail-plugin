@@ -70,6 +70,19 @@ class EventManager(val main: CatchTailMinigame) : Listener {
 
     @EventHandler
     fun onEntityDamage(e: EntityDamageEvent) {
+        if (main.status == MinigameStatus.WAITING || main.status == MinigameStatus.WAITING) {
+            if (e.entity is Player) {
+                val p = e.entity as Player
+                if (main.participants.contains(p)) {
+                    if (p.health - e.damage < 1) {
+                        // TP arena
+                        p.health = 20.0
+                        e.isCancelled = true
+                    }
+                }
+            }
+        }
+
         if (main.status == MinigameStatus.STARTED) {
             if (e.entity is Player) {
                 val p = e.entity as Player
