@@ -105,17 +105,24 @@ class CatchTailMinigame : AbstractMinigame() {
                     loc.x, (loc.y + .5), loc.z,
                     1, 0.05, 0.05, 0.05, 0.0, null
             )
-
         }
+
+        val deadList: ArrayList<Player> = ArrayList()
         for (p in armorStandList.keys) {
             if (p != player) {
                 if (loc.distance(p.location) < 0.2) {
                     if (p.health - 1 < 1)
-                        playerDead(p)
+                        deadList.add(p)
                     else p.damage(1.0)
                 }
             }
         }
+
+        deadList.forEach {
+            playerDead(it)
+        }
+
+
         /*val packet = PacketPlayOutWorldParticles(
                 Particles.FLAME,
                 true,
