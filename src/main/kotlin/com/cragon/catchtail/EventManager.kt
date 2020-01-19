@@ -34,23 +34,7 @@ class EventManager(val main: CatchTailMinigame) : Listener {
             }
 
             main.tailLists[player]?.add(player.location)
-            var loc: Location = main.tailLists[player]!![0].clone()
-
-            if (!main.armorStandList.containsKey(player)) {
-                loc.y = loc.y - 1.2
-                val armorStand = player.world.spawn(loc, ArmorStand::class.java)
-                armorStand.setGravity(false)
-                armorStand.isVisible = false
-//                armorStand.isInvulnerable = true
-                val head = ItemStack(Material.PLAYER_HEAD)
-                val meta = head.itemMeta as SkullMeta?
-                meta!!.owningPlayer = player
-                head.itemMeta = meta
-                armorStand.setHelmet(head)
-                main.armorStandList[player] = armorStand
-            }
-
-            loc = main.tailLists[player]?.get(0)!!.clone()
+            val loc = main.tailLists[player]?.get(0)!!.clone()
             loc.y = loc.y - 1.2
             main.armorStandList[player]?.teleport(loc)
         }

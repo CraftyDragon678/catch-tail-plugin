@@ -4,13 +4,12 @@ import me.nuty.minigamecore.MinigameCore
 import me.nuty.minigamecore.minigame.AbstractMinigame
 import me.nuty.minigamecore.minigame.MinigameResult
 import me.nuty.minigamecore.minigame.MinigameStatus
-import org.bukkit.Bukkit
+import org.bukkit.*
 import org.bukkit.Bukkit.getServer
-import org.bukkit.GameMode
-import org.bukkit.Location
-import org.bukkit.Particle
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.SkullMeta
 import java.util.*
 import kotlin.collections.HashMap
 import kotlin.collections.set
@@ -28,6 +27,20 @@ class CatchTailMinigame : AbstractMinigame() {
         for (p in participants) {
             tailLists[p] = ArrayList()
             tailLists[p]!!.add(p.location)
+
+            val loc: Location = tailLists[p]!![0].clone()
+
+            loc.y = loc.y - 1.2
+            val armorStand = p.world.spawn(loc, ArmorStand::class.java)
+            armorStand.setGravity(false)
+            armorStand.isVisible = false
+//                armorStand.isInvulnerable = true
+            val head = ItemStack(Material.PLAYER_HEAD)
+            val meta = head.itemMeta as SkullMeta?
+            meta!!.owningPlayer = p
+            head.itemMeta = meta
+            armorStand.setHelmet(head)
+            armorStandList[p] = armorStand
         }
 
         getServer().scheduler.scheduleSyncRepeatingTask(MinigameCore.getInstance(), Runnable {
