@@ -66,7 +66,10 @@ class EventManager(val main: CatchTailMinigame) : Listener {
                         if (main.armorStandList[p] == e.entity) {
                             if (p.health - e.damage < 1)
                                 main.playerDead(p)
-                            else p.damage(e.damage, e.damager)
+                            else {
+                                p.damage(e.damage, e.damager)
+                                e.damager.velocity = e.damager.location.direction.multiply(-3)
+                            }
                         }
                     }
                 }
