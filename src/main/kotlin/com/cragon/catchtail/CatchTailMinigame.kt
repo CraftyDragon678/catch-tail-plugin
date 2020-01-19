@@ -84,6 +84,7 @@ class CatchTailMinigame : AbstractMinigame() {
 
 
     override fun join(p0: Player?) {
+        // for debugging
         setStartLeftTime(5, true)
     }
 
